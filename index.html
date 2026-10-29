@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kế hoạch Hội thi 20/11 - THCS Tây Thái Ninh</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #eef2f6;
+            padding: 12px 10px;
+            display: flex;
+            justify-content: center;
+            color: #1e2b3c;
+        }
+        .app-container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 20, 40, 0.15);
+            overflow: hidden;
+            border: 1px solid #d9e2ec;
+        }
+
+        /* ===== HEADER CĂN GIỮA ===== */
+        .header-banner {
+            background: linear-gradient(135deg, #0b2b4a 0%, #1a4f8a 100%);
+            padding: 30px 15px 25px;
+            position: relative;
+            color: #ffffff;
+            overflow: hidden;
+            border-bottom: 4px solid #f5a623;
+            text-align: center;
+        }
+
+        .header-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .header-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: -40px;
+            width: 200px;
+            height: 200px;
+            border: 25px solid rgba(245, 166, 35, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .school-badge {
+            background: linear-gradient(135deg, #f5a623, #f7b84b);
+            color: #0b2b4a;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.3);
+            line-height: 1;
+        }
+        .school-badge span {
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .header-titles h1 {
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 800;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            margin-bottom: 6px;
+        }
+
+        .header-titles h2 {
+            font-size: 13px;
+            font-weight: 500;
+            color: #a8c7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .header-titles h2::before, .header-titles h2::after {
+            content: '✦';
+            color: #f5a623;
+            font-size: 10px;
+        }
+
+        /* ===== NỘI DUNG CHÍNH ===== */
+        .main-body {
+            padding: 20px 15px 25px;
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .menu-btn {
+            background: #ffffff;
+            border: 2px solid #d0ddea;
+            border-radius: 12px;
+            padding: 15px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #0b2b4a;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1.4;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            width: 100%;
+        }
+
+        .menu-btn:hover, .menu-btn:active {
+            background: #f4f8ff;
+            border-color: #90b4d9;
+        }
+
+        .menu-btn.active {
+            background: #e3efff;
+            border-color: #1a73e8;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.12);
+        }
+
+        .menu-btn .num {
+            background: #1a73e8;
+            color: #fff;
+            font-size: 14px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(26, 115, 232, 0.3);
+        }
+
+        .content-area {
+            background: #f8fbff;
+            border-radius: 14px;
+            padding: 20px 16px;
+            border-left: 5px solid #f5a623;
+            min-height: 150px;
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: #1e2b3c;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+            animation: fadeIn 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .content-area h3 {
+            color: #0b2b4a;
+            font-size: 17px;
+            margin-bottom: 12px;
+            border-bottom: 2px dashed #cbd6e3;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .content-area h4 {
+            color: #1a4f8a;
+            font-size: 15px;
+            margin: 16px 0 8px;
+            font-weight: 700;
+        }
+
+        .content-area ul {
+            padding-left: 18px;
+            margin: 8px 0;
+        }
+
+        .content-area li {
+            margin-bottom: 6px;
+        }
+
+        /* Bảng biểu trên mobile: Cho phép cuộn ngang */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 12px 0;
+            border-radius: 8px;
+            border: 1px solid #d9e2ec;
+        }
+
+        .content-area table {
+            width: 100%;
+            min-width: 300px;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            background: #fff;
+        }
+
+        .content-area th, .content-area td {
+            border: 1px solid #d9e2ec;
+            padding: 8px 10px;
+            text-align: left;
+        }
+
+        .content-area th {
+            background: #e3efff;
+            font-weight: 600;
+            color: #0b2b4a;
+            white-space: nowrap;
+        }
+
+        .placeholder {
+            color: #7a8ea3;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 400px) {
+            .header-titles h1 { font-size: 17px; }
+            .header-titles h2 { font-size: 11.5px; }
+            .menu-btn { font-size: 14px; padding: 12px 14px; }
+            .content-area { font-size: 14px; padding: 16px 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    
+    <!-- HEADER -->
+    <div class="header-banner">
+        <div class="header-content">
+            <div class="school-badge">
+                20<span>11</span>
+            </div>
+            <div class="header-titles">
+                <h1>TRƯỜNG THCS TÂY THÁI NINH - PH1</h1>
+                <h2>Bản quyền của Gv: Hoàng Anh Dũng - trường THCS Tây Thái Ninh</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- NỘI DUNG CHÍNH -->
+    <div class="main-body">
+        <div class="menu-grid">
+            <button class="menu-btn" data-target="muc1">
+                <span class="num">1</span>
+                Phong trào thi đua học tập, nền nếp đội
+            </button>
+            <button class="menu-btn" data-target="muc2">
+                <span class="num">2</span>
+                Trang trí lớp – Vệ sinh – Chăm sóc cây
+            </button>
+            <button class="menu-btn" data-target="muc3">
+                <span class="num">3</span>
+                Hội thi văn nghệ chào mừng
+            </button>
+            <button class="menu-btn" data-target="muc4">
+                <span class="num">4</span>
+                Hội thi thể thao
+            </button>
+            <!-- THÊM MỚI MỤC 5 -->
+            <button class="menu-btn" data-target="muc5">
+                <span class="num">5</span>
+                Danh sách học sinh tham gia
+            </button>
+        </div>
+
+        <div id="contentDisplay" class="content-area">
+            <div class="placeholder">👆 Chạm vào một mục để xem nội dung chi tiết</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Bọc tất cả các thẻ <table> vào div.table-responsive để cuộn ngang trên mobile
+    function wrapTables(htmlString) {
+        return htmlString.replace(/<table>/g, '<div class="table-responsive"><table>').replace(/<\/table>/g, '</table></div>');
+    }
+
+    const rawContents = {
+        muc1: `
+            <h3>Hình thức thực hiện</h3>
+            <ul>
+                <li><strong>Điểm tốt:</strong> Là điểm miệng các môn học, gồm điểm 9, 10.</li>
+                <li><strong>Đánh giá hàng tuần:</strong> Cuối mỗi tuần và cuối đợt thi đua, Ban giám khảo tập hợp số học sinh đạt điểm tốt. Tính theo số lượng điểm tốt để tính thứ tự các lớp.</li>
+                <li><strong>Tập thể:</strong> Tính theo số lượng giờ học T, K, TB, Y để tính thứ tự các lớp.</li>
+            </ul>
+            <p><strong>Cách tính điểm:</strong></p>
+            <ul>
+                <li>Tốt: 10 &nbsp;|&nbsp; Khá: 8 &nbsp;|&nbsp; TB: 5 &nbsp;|&nbsp; Yếu: 3</li>
+                <li>Tổng điểm chia bình quân số tiết / tuần.</li>
+                <li><strong>Tổng chung</strong> = (Số thứ tự 5 tuần cộng lại) chia 5.</li>
+            </ul>
+            <table>
+                <tr><th>STT</th><th>Tuần 1</th><th>Tuần 2</th><th>Tuần 3</th><th>Tuần 4</th><th>Tuần 5</th></tr>
+                <tr><td>1</td><td>Xếp chung</td><td>Xếp chung</td><td>Xếp chung</td><td>Xếp chung</td><td>Cộng thứ tự 5 tuần chia 5</td></tr>
+                <tr><td>2</td><td>Điểm cao</td><td>Điểm cao</td><td>Điểm cao</td><td>Điểm cao</td><td>Cộng thứ tự 5 tuần chia 5</td></tr>
+            </table>
+            <p><strong>Kết quả chung</strong> = (KQ SĐB × 2 + Điểm cao) / 3</p>
+            <p><strong>Ban giám khảo:</strong> Cô Trần Thị Lý</p>
+        `,
+        muc2: `
+            <h3>Tổ chức thực hiện</h3>
+            <ul>
+                <li>Giáo viên chủ nhiệm hướng dẫn học sinh thực hiện, tổ chức chấm điểm hàng tuần.</li>
+                <li>Liên đội – Ban Thi đua – Đội tự quản kiểm tra, chấm điểm nề nếp vệ sinh theo quy định.</li>
+                <li>Liên đội và giáo viên phụ trách đội tổng hợp điểm thi đua qua sổ theo dõi kết quả lao động.</li>
+                <li>Giáo viên TPT thành lập BGK chấm trang trí lớp học.</li>
+                <li><strong>Thời gian chấm thi:</strong> 15h30 ngày 13/11/2026.</li>
+            </ul>
+            <p><strong>Tiêu chí chấm:</strong></p>
+            <table>
+                <tr><th>Trang trí lớp</th><th>Khăn bàn</th><th>Lọ hoa</th><th>Trang trí bảng</th><th>Bàn ghế</th><th>Vệ sinh</th><th>Cắt dọn đồ dùng</th><th>Tổng</th></tr>
+                <tr><td>5</td><td>5</td><td>20</td><td>5</td><td>10</td><td>5</td><td>5</td><td>50</td></tr>
+            </table>
+            <p><strong>Ban giám khảo:</strong></p>
+            <ul>
+                <li>Cô Phạm Thị Lĩnh – Giám khảo</li>
+                <li>Cô Nguyễn Thị Diệp – Giám khảo</li>
+                <li>Cô Trần Thị Lý – Giám khảo</li>
+            </ul>
+        `,
+        muc3: `
+            <h3>Tổ chức thực hiện</h3>
+            <ul>
+                <li>Giáo viên chủ nhiệm hướng dẫn học sinh lựa chọn tiết mục, tổ chức luyện tập và đăng ký với Ban tổ chức theo thời gian quy định.</li>
+                <li>Kinh phí thuê trang phục, tập luyện các lớp tự chi.</li>
+                <li>Ban giám khảo đánh giá căn cứ vào nội dung, ý nghĩa, chất lượng nghệ thuật, sự sáng tạo, phong cách biểu diễn và tinh thần tập thể.</li>
+                <li><strong>Dự kiến thời gian tổ chức:</strong> Buổi sáng thứ 7, ngày 14 tháng 11 năm 2026.</li>
+            </ul>
+            <p><strong>Biểu điểm chấm văn nghệ (Tổng 100 điểm):</strong></p>
+            <table>
+                <tr><th>STT</th><th>Nội dung chấm điểm</th><th>Điểm tối đa</th></tr>
+                <tr><td>1</td><td><strong>Nội dung, chủ đề</strong></td><td><strong>20</strong></td></tr>
+                <tr><td></td><td>Đúng chủ đề 20/11, ca ngợi thầy cô, mái trường, tình bạn, quê hương, đất nước</td><td>10</td></tr>
+                <tr><td></td><td>Lời ca, nội dung trong sáng, phù hợp lứa tuổi học sinh THCS</td><td>5</td></tr>
+                <tr><td></td><td>Có ý nghĩa giáo dục, truyền tải thông điệp tốt đẹp</td><td>5</td></tr>
+                <tr><td>2</td><td><strong>Chất lượng biểu diễn</strong></td><td><strong>25</strong></td></tr>
+                <tr><td></td><td>Hát đúng lời, đúng giai điệu; múa, nhảy hoặc biểu diễn đúng kỹ thuật</td><td>10</td></tr>
+                <tr><td></td><td>Đúng nhịp, phối hợp tốt với nhạc nền</td><td>5</td></tr>
+                <tr><td></td><td>Biểu diễn rõ ràng, tương đối đồng đều, hạn chế lỗi</td><td>10</td></tr>
+                <tr><td>3</td><td><strong>Phong cách và biểu cảm</strong></td><td><strong>20</strong></td></tr>
+                <tr><td></td><td>Tự tin, mạnh dạn, làm chủ sân khấu</td><td>5</td></tr>
+                <tr><td></td><td>Biểu cảm phù hợp nội dung tiết mục</td><td>5</td></tr>
+                <tr><td></td><td>Động tác, nét mặt, cử chỉ tự nhiên</td><td>5</td></tr>
+                <tr><td></td><td>Phối hợp ăn ý giữa các thành viên</td><td>5</td></tr>
+                <tr><td>4</td><td><strong>Dàn dựng và sáng tạo</strong></td><td><strong>15</strong></td></tr>
+                <tr><td></td><td>Bố cục tiết mục hợp lý, có mở đầu và kết thúc rõ ràng</td><td>5</td></tr>
+                <tr><td></td><td>Đội hình, động tác, chuyển đội hình phù hợp</td><td>5</td></tr>
+                <tr><td></td><td>Có sự sáng tạo, tạo được nét riêng</td><td>5</td></tr>
+                <tr><td>5</td><td><strong>Trang phục, đạo cụ</strong></td><td><strong>10</strong></td></tr>
+                <tr><td></td><td>Trang phục đẹp, lịch sự, phù hợp lứa tuổi và chủ đề</td><td>5</td></tr>
+                <tr><td></td><td>Đạo cụ phù hợp, sử dụng hiệu quả, bảo đảm an toàn</td><td>5</td></tr>
+                <tr><td>6</td><td><strong>Tác phong, thời gian</strong></td><td><strong>10</strong></td></tr>
+                <tr><td></td><td>Chuẩn bị chu đáo, lên và rời sân khấu đúng quy định</td><td>5</td></tr>
+                <tr><td></td><td>Thực hiện đúng thời lượng do Ban Tổ chức quy định</td><td>5</td></tr>
+                <tr><td colspan="2"><strong>TỔNG ĐIỂM</strong></td><td><strong>100</strong></td></tr>
+            </table>
+            <p><strong>Ban giám khảo:</strong></p>
+            <ul>
+                <li>Cô Trần Thị Lý – Trưởng ban</li>
+                <li>Thầy Nguyễn Hữu Sáu – Phó trưởng ban</li>
+                <li>Cô Nguyễn Thị Diệp – Phó trưởng ban</li>
+                <li>Cô Hoàng Thị Thu Dung – Phó trưởng ban</li>
+            </ul>
+            <p><strong>Cơ cấu giải thưởng:</strong> 1 giải nhất, 1 giải nhì, 1 giải ba, 5 giải khuyến khích.</p>
+        `,
+        muc4: `
+            <h3>Nội dung, thời gian và hình thức thi đấu</h3>
+            <p><strong>1. Nội dung:</strong></p>
+            <ul>
+                <li>Mỗi nội dung các lớp cử 02 VĐV (01 nam, 01 nữ) tham gia thi đấu. Riêng môn bóng chuyền mỗi lớp chọn từ 6-12 VĐV tham gia thi đấu.</li>
+                <li>Một học sinh chỉ được tham gia tối đa 2 nội dung điền kinh + một môn thể thao còn lại.</li>
+            </ul>
+            <table>
+                <tr><th>STT</th><th>MÔN</th><th>KHỐI</th></tr>
+                <tr><td>1</td><td><strong>Điền kinh:</strong> Chạy 100m, 400m (nữ), 800m (nam), Nhảy xa, Nhảy cao</td><td>Khối 6,7,8,9</td></tr>
+                <tr><td>2</td><td><strong>Cờ vua</strong> (nam, nữ)</td><td>Khối 6,7,8,9</td></tr>
+                <tr><td>3</td><td><strong>Bóng bàn</strong> (nam, nữ)</td><td>Khối 6,7,8,9</td></tr>
+                <tr><td>4</td><td><strong>Đá cầu</strong> (nam, nữ)</td><td>Khối 6,7,8,9</td></tr>
+                <tr><td>5</td><td><strong>Bóng chuyền</strong> (nam, nữ)</td><td>Khối 8,9</td></tr>
+            </table>
+            <p><strong>2. Thời gian thi đấu, trọng tài:</strong></p>
+            <table>
+                <tr><th>Thời gian</th><th>Môn thi</th><th>Trọng tài</th></tr>
+                <tr><td rowspan="3">16h Thứ ba<br>3/11/2026</td><td>Bóng chuyền nam 8,9</td><td>Thầy Sáu, cô Loan, thầy Thắng</td></tr>
+                <tr><td>Bóng bàn nam 6-9</td><td>Thầy Tuấn, cô Lý</td></tr>
+                <tr><td>Cờ vua nam, nữ 6-9</td><td>Thầy Dũng, cô Hằng</td></tr>
+                <tr><td rowspan="2">16h Thứ năm<br>5/11/2026</td><td>Bóng chuyền nữ 8,9</td><td>Thầy Sáu, cô Loan, thầy Thắng</td></tr>
+                <tr><td>Đá cầu nữ 6-9</td><td>Thầy Thắng, cô Nhẫn</td></tr>
+                <tr><td rowspan="4">14h Thứ sáu<br>6/11/2026</td><td>Chạy 100m (nam, nữ)</td><td>Thầy Sáu, Thầy Dũng, Thầy Thắng, cô Lý, cô Loan</td></tr>
+                <tr><td>Chạy 400m (nữ), 800m (nam)</td><td>Thầy Dũng, cô Lý</td></tr>
+                <tr><td>Nhảy xa (nam, nữ)</td><td>Thầy Thắng, cô Loan</td></tr>
+                <tr><td>Bóng bàn nữ 6-9</td><td>Thầy Tuấn, cô Lý</td></tr>
+                <tr><td>14h Thứ bảy<br>7/11/2026</td><td>Các môn chưa xong thi tiếp</td><td>Như phân công</td></tr>
+            </table>
+            <p><strong>3. Hình thức thi đấu:</strong></p>
+            <ul>
+                <li>Thi đấu loại trực tiếp, tính thành tích riêng từng nội dung.</li>
+                <li><strong>Vòng 1:</strong> Hai lớp cùng khối gặp nhau.</li>
+                <li><strong>Vòng 2:</strong> Thắng khối 6 gặp khối 7; thắng khối 8 gặp khối 9.</li>
+                <li><strong>Vòng 3:</strong> Thắng khối 6,7 gặp thắng khối 8,9 (nhất trường).</li>
+            </ul>
+            <p><strong>Cơ cấu giải thưởng:</strong> Khối 6,7 và Khối 8,9 đều có 1 giải Nhất, 1 giải Nhì cho mỗi môn (Nam, Nữ). Riêng Bóng chuyền chỉ dành cho Khối 8,9.</p>
+        `,
+        // NỘI DUNG MỚI ĐƯỢC THÊM VÀO
+        muc5: `
+            <h3>Danh sách học sinh tham gia</h3>
+            <p><em>(Dựa trên danh sách đăng ký thi đấu)</em></p>
+            
+            <h4>1. Đội tuyển Nam</h4>
+            <table>
+                <tr><th>STT</th><th>Họ và tên</th><th>Nội dung thi</th></tr>
+                <tr><td>1</td><td>Bùi Gia Thịnh</td><td>Đá cầu</td></tr>
+                <tr><td>2</td><td>Nguyễn Ngọc Hùng</td><td>Cờ vua</td></tr>
+                <tr><td>3</td><td>Bùi Đức Hiếu</td><td>Bóng bàn</td></tr>
+                <tr><td>4</td><td>Trần Đức Thắng</td><td>Chạy 100m</td></tr>
+                <tr><td>6</td><td>Nguyễn Hoàng Ngọc Khánh</td><td>Chạy 800m</td></tr>
+                <tr><td>7</td><td>Trần Đức Thắng</td><td>Nhảy cao</td></tr>
+                <tr><td>8</td><td>Nguyễn Hoàng Ngọc Khánh</td><td>Nhảy xa</td></tr>
+            </table>
+
+            <h4>2. Đội tuyển Nữ</h4>
+            <table>
+                <tr><th>STT</th><th>Họ và tên</th><th>Nội dung thi</th></tr>
+                <tr><td>1</td><td>Bùi Thị Dịu</td><td>Đá cầu</td></tr>
+                <tr><td>2</td><td>Bùi Mai Dy Niên</td><td>Cờ vua</td></tr>
+                <tr><td>3</td><td>Bùi Khanh Ly</td><td>Bóng bàn</td></tr>
+                <tr><td>4</td><td>Bùi Nguyễn Thị Chi</td><td>Chạy 100m</td></tr>
+                <tr><td>6</td><td>Bùi Nguyễn Thị Chi</td><td>Chạy 400m</td></tr>
+                <tr><td>7</td><td>Bùi Khánh Ly</td><td>Nhảy cao</td></tr>
+                <tr><td>8</td><td>Nguyễn Thuỳ Dung</td><td>Nhảy xa</td></tr>
+            </table>
+
+            <h4>3. Đội văn nghệ</h4>
+            <table>
+                <tr><th>STT</th><th>Họ và tên</th></tr>
+                <tr><td>1</td><td>Bùi Khánh Ly</td></tr>
+                <tr><td>2</td><td>Nguyễn Thị Chi</td></tr>
+                <tr><td>3</td><td>Bùi Quỳnh Chi</td></tr>
+                <tr><td>4</td><td>Bùi Nguyễn Tuệ Sam</td></tr>
+                <tr><td>5</td><td>Bùi Thị Dịu</td></tr>
+                <tr><td>6</td><td>Nguyễn Thị Lệ Quyên</td></tr>
+                <tr><td>7</td><td>Trần Nguyễn Chi</td></tr>
+            </table>
+        `
+    };
+
+    // Tiền xử lý dữ liệu để bọc bảng vào div responsive
+    const contents = {};
+    for (let key in rawContents) {
+        contents[key] = wrapTables(rawContents[key]);
+    }
+
+    const buttons = document.querySelectorAll('.menu-btn');
+    const display = document.getElementById('contentDisplay');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            buttons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const target = this.dataset.target;
+            if (contents[target]) {
+                display.innerHTML = contents[target];
+            }
+        });
+    });
+</script>
+</body>
+</html>
